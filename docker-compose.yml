@@ -1,16 +1,21 @@
 version: '3.8'
 services:
   user-service:
-    image: manojmovva/user-service:v1.0.0  # Use the tagged version
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    image: manojmovva/user-service:v1.0.0  # Replace with your desired tag
     ports:
       - "3001:3001"
     environment:
       - PORT=3001
 
   product-service:
-    image: manojmovva/product-service:v1.0.0  # Use the tagged version
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    image: manojmovva/product-service:v1.0.0  # Replace with your desired tag
     ports:
       - "3002:3002"
     environment:
       - PORT=3002
-
