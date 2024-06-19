@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
-const port = 3001;
+const userRoutes = require('./routes/userRoutes');
 
 app.use(express.json());
-
-const userRoutes = require('./routes/userRoutes');
 app.use('/users', userRoutes);
 
-app.listen(port, () => {
-    console.log(`User Service listening at http://localhost:${port}`);
+app.get('/', (req, res) => {
+    res.send('User Service Running');
+});
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`User service listening on port ${PORT}`);
 });

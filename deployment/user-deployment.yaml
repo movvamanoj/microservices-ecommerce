@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: <username>/user-service:v1.0.0
+        image: movvamanoj/user-service:v1.0.0
         ports:
         - containerPort: 3001
