@@ -1,15 +1,16 @@
 version: '3.8'
 services:
   user-service:
-    build: ./user-service
+    image: manojmovva/user-service:v1.0.0  # Use the tagged version
     ports:
       - "3001:3001"
     environment:
       - PORT=3001
 
   product-service:
-    build: ./product-service
+    image: manojmovva/product-service:v1.0.0  # Use the tagged version
     ports:
       - "3002:3002"
     environment:
       - PORT=3002
+
