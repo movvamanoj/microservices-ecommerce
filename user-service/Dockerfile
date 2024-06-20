@@ -1,5 +1,5 @@
-# Stage 1: Build
-FROM node:14-slim AS builder
+# Use the official Node.js slim image
+FROM node:14-slim
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -7,21 +7,13 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies and cleanup
 RUN npm install --production && \
-    npm cache clean --force
+    npm cache clean --force && \
+    rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Copy the rest of the application code
 COPY . .
-
-# Stage 2: Runtime
-FROM node:14-slim
-
-# Set the working directory
-WORKDIR /usr/src/app
-
-# Copy only the necessary files from the build stage
-COPY --from=builder /usr/src/app ./
 
 # Expose the port the app runs on
 EXPOSE 3001
