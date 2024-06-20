@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:16-slim AS builder
+FROM node:14-alpine AS builder
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -7,15 +7,15 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install --production && \
+# Install production dependencies
+RUN npm install --only=production && \
     npm cache clean --force
 
 # Copy the rest of the application code
 COPY . .
 
 # Stage 2: Runtime
-FROM node:16-slim
+FROM node:14-alpine
 
 # Set the working directory
 WORKDIR /usr/src/app

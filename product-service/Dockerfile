@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:14-slim AS builder
+FROM node:14-alpine AS builder
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -15,7 +15,7 @@ RUN npm install --only=production && \
 COPY . .
 
 # Stage 2: Runtime
-FROM node:14-slim
+FROM node:14-alpine
 
 # Set the working directory
 WORKDIR /usr/src/app
