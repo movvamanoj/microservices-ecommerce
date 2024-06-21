@@ -7,5 +7,6 @@ spec:
     app: user-service-green
   ports:
     - protocol: TCP
-      port: 3001
+      port: 30001
       targetPort: 3001
+  type: NodePort

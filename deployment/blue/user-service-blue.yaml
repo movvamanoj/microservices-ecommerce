@@ -7,5 +7,8 @@ spec:
     app: user-service-blue
   ports:
     - protocol: TCP
-      port: 3001
+      port: 30001
       targetPort: 3001
+  type: NodePort
+
+    
