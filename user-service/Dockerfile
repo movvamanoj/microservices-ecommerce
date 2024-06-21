@@ -20,6 +20,9 @@ FROM node:14-alpine
 # Set the working directory
 WORKDIR /usr/src/app
 
+# Install Axios during runtime (optional)
+RUN npm install axios
+
 # Copy only the necessary files from the build stage
 COPY --from=builder /usr/src/app ./
 

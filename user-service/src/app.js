@@ -6,8 +6,8 @@ const productServiceUrl = process.env.PRODUCT_SERVICE_URL || 'http://localhost:3
 
 // Sample data
 const users = [
-  { id: 1, name: 'User 1' },
-  { id: 2, name: 'User 2' }
+  { id: 1, name: 'User 1 version V2.0.0 ' },
+  { id: 2, name: 'User 2 version V2.0.0 ' }
 ];
 
 // Middleware to parse JSON

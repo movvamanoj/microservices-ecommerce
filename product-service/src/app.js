@@ -4,8 +4,8 @@ const port = process.env.PORT || 3002;
 
 // Sample data
 const products = [
-  { id: 1, name: 'Product 1' },
-  { id: 2, name: 'Product 2' }
+  { id: 1, name: 'version V2.0.0 Product 1' },
+  { id: 2, name: 'version V2.0.0 Product 2' }
 ];
 
 // Middleware to parse JSON

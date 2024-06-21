@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config-blue
+data:
+  nginx.conf: |
+    events {
+        worker_connections 1024;
+    }
+
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+
+        sendfile        on;
+        keepalive_timeout  65;
+
+        upstream user-service {
+            server user-service-blue:3001;
+        }
+
+        upstream product-service {
+            server product-service-blue:3002;
+        }
+
+        server {
+            listen 80;
+
+            location /users {
+                proxy_pass http://user-service;
+            }
+
+            location /products {
+                proxy_pass http://product-service;
+            }
+        }
+    }

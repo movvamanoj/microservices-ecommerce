@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment-green
+  labels:
+    app: user-service-green
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service-green
+  template:
+    metadata:
+      labels:
+        app: user-service-green
+    spec:
+      containers:
+      - name: user-service
+        image: manojmovva/user-service:v2.0.0
+        ports:
+        - containerPort: 3001
+        env:
+        - name: PRODUCT_SERVICE_URL
+          value: "http://product-service-green:3002"

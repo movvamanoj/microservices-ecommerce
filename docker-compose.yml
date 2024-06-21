@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   user-service:
-    image: manojmovva/user-service:v1.1.0
+    image: manojmovva/user-service:v2.0.0
     build:
       context: ./user-service
       dockerfile: Dockerfile
@@ -9,10 +9,10 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
-      - PRODUCT_SERVICE_URL=http://product-service:3002
+      - PRODUCT_SERVICE_URL=http://localhost:3002
 
   product-service:
-    image: manojmovva/product-service:v1.1.0
+    image: manojmovva/product-service:v2.0.0
     build:
       context: ./product-service
       dockerfile: Dockerfile
